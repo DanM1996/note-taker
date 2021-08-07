@@ -7,15 +7,17 @@ const app = express();
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
-// required with every backend app, makes it work 
+// recognizes the incoming request object as strings or arrays
 app.use(express.urlencoded({ extended: true }));
+// recognizes and converts incoming request data into json so it works with our code
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('./Develop/public'));
+
 
 // use the routes located in the routes folder
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
 app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
+    console.log(`API server now on port http://localhost/${PORT}!`);
 });
