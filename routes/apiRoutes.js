@@ -7,19 +7,22 @@ const store = require('../Develop/db/store');
 const { notes } = require('../Develop/db/db.json');
 
 // const params = [req.body.params]
-
+console.log(notes);
 router.get('/notes', (req, res) => {
-    return res.json(notes);
+    store.readfnc().then(
+    res.json(notes));
 });
 
 router.post('/notes', (req, res) => {
-    console.log(store);
+    console.log(store.sayHello());
     req.body.id = notes.length.toString();
-    res.json({
-        message: 'success',
-        res: notes,
-        data: store
-    })
+    store.writefnc()
+        res.json({
+            message: 'success',
+            res: notes
+        })
+        console.log(store.readfnc());
+        console.log(notes);
 });
 
 module.exports = router;
