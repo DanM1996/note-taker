@@ -15,12 +15,13 @@ router.get('/notes', (req, res) => {
 
 router.post('/notes', (req, res) => {
     console.log(store.sayHello());
-    req.body.id = notes.length.toString();
-    store.writefnc()
-        res.json({
+    // req.body.id = notes.length.toString();
+    
+        results = res.json({
             message: 'success',
             res: notes
-        })
+        });
+        store.writefnc();
         console.log(store.readfnc());
         console.log(notes);
 });
