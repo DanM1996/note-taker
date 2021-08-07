@@ -11,7 +11,7 @@ class Store {
         return read('./Develop/db/db.json', 'utf8');
     }
     writefnc(notes) {
-        return write('./Develop/db/db.json', JSON.stringify(notes));
+        return write('./Develop/db/db.json', JSON.stringify( {notes} ));
     }
 
 };

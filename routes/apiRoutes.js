@@ -21,7 +21,7 @@ router.post('/notes', (req, res) => {
             message: 'success',
             res: notes
         });
-        store.writefnc();
+        store.writefnc(notes);
         console.log(store.readfnc());
         console.log(notes);
 });
