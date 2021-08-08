@@ -7,7 +7,7 @@ const store = require('../Develop/db/store');
 const { notes } = require('../Develop/db/db.json');
 
 // const params = [req.body.params]
-router.get('/notes/:id', (req, res) => {
+router.get('/notes/', (req, res) => {
     const id = req.params.id;
     console.log(id);
     // store.readfnc(notes)
