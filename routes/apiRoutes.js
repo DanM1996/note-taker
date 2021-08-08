@@ -8,21 +8,23 @@ const { notes } = require('../Develop/db/db.json');
 
 // const params = [req.body.params]
 router.get('/notes/', (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    // store.readfnc(notes)
-    // .then(
-    // res.json(notes));
+    // store.readfnc(req)
+    //     .then((result, err) => {
+    //         if (err) {
+    //             console.log(err);
+    //         }
+    //         res.json(JSON.parse(result));
+    //     });
 });
 
 router.post('/notes', (req, res) => {
     console.log(store.sayHello());
     // req.body.id = notes.length.toString();
-        res.json(notes);
-        notes.push(req.body);
-        store.writefnc(notes);
-        // console.log(req.body)
-        // console.log(notes);
+    res.json(notes);
+    notes.push(req.body);
+    store.writefnc(notes);
+    // console.log(req.body)
+    // console.log(notes);
 });
 
 module.exports = router;
