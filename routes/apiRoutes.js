@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { v4: uuidv4 } = require('uuid')
 
 // importing the function written in store.db
 const store = require('../Develop/db/store');
@@ -6,25 +7,23 @@ const store = require('../Develop/db/store');
 // takes the notes object stored in db.json and pulls it into here as an object
 const { notes } = require('../Develop/db/db.json');
 
-// const params = [req.body.params]
-router.get('/notes/', (req, res) => {
-    // store.readfnc(req)
-    //     .then((result, err) => {
-    //         if (err) {
-    //             console.log(err);
-    //         }
-    //         res.json(JSON.parse(result));
-    //     });
+router.get('/notes', (req, res) => {
+    console.log(notes);
+    res.json(notes);  
 });
 
 router.post('/notes', (req, res) => {
-    console.log(store.sayHello());
-    // req.body.id = notes.length.toString();
-    res.json(notes);
-    notes.push(req.body);
-    store.writefnc(notes);
-    // console.log(req.body)
-    // console.log(notes);
+        let addedNote = req.body
+        addedNote.id = uuidv4();
+        res.json(notes);
+        // appending the body (text) of the request (notes) to the notes database
+        notes.push(addedNote);
+        // writing the new note to the database
+        store.writefnc(notes);
 });
+
+router.get('/notes/:id', (req, res) => {
+    res.json(notes);
+})
 
 module.exports = router;
